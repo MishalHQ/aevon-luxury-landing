@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEVON - Luxury Tech Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 4px; }
+        
+        .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); padding: 20px 0; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, #dc2626 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; }
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { color: #fff; cursor: pointer; font-weight: 500; transition: color 0.3s; text-decoration: none; }
+        .nav-links a:hover { color: #dc2626; }
+        .nav-links button { background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: transform 0.3s; }
+        .nav-links button:hover { transform: translateY(-2px); }
+        
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 120px 20px 80px; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.3; animation: float 20s ease-in-out infinite; }
+        .orb1 { width: 500px; height: 500px; background: radial-gradient(circle, #dc2626 0%, transparent 70%); top: -200px; right: -200px; }
+        .orb2 { width: 400px; height: 400px; background: radial-gradient(circle, #991b1b 0%, transparent 70%); bottom: -150px; left: -150px; animation-delay: 5s; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(50px, -50px); } }
+        .hero-content { max-width: 900px; text-align: center; position: relative; z-index: 1; }
+        .badge { display: inline-block; background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.3); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; margin-bottom: 30px; color: #fca5a5; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 800; line-height: 1.1; margin-bottom: 30px; }
+        .gradient { background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.3rem; color: #9ca3af; margin-bottom: 40px; }
+        .hero button { background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; border: none; padding: 18px 40px; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.3s; margin-bottom: 60px; }
+        .hero button:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(220, 38, 38, 0.4); }
+        .stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+        .stats div { text-align: center; }
+        .stats h3 { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, #dc2626 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stats p { color: #6b7280; font-size: 0.9rem; }
+        
+        .section { padding: 100px 20px; max-width: 1400px; margin: 0 auto; }
+        .section h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 800; text-align: center; margin-bottom: 20px; background: linear-gradient(135deg, #fff 0%, #dc2626 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { text-align: center; color: #9ca3af; font-size: 1.1rem; max-width: 700px; margin: 0 auto 60px; }
+        
+        .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; margin-top: 40px; }
+        .about-grid p { color: #d1d5db; font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; }
+        .features { display: flex; flex-direction: column; gap: 25px; margin-top: 40px; }
+        .feature { display: flex; gap: 20px; padding: 20px; background: rgba(220, 38, 38, 0.05); border: 1px solid rgba(220, 38, 38, 0.1); border-radius: 12px; transition: all 0.3s; }
+        .feature:hover { background: rgba(220, 38, 38, 0.1); transform: translateX(10px); }
+        .feature span { font-size: 2rem; }
+        .feature h4 { font-size: 1.2rem; margin-bottom: 5px; }
+        .feature p { color: #9ca3af; font-size: 0.95rem; margin: 0; }
+        .visual-card { background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.2); border-radius: 20px; padding: 50px; text-align: center; transition: transform 0.3s; }
+        .visual-card:hover { transform: translateY(-10px); }
+        .visual-card .icon { font-size: 4rem; margin-bottom: 20px; }
+        .visual-card h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .visual-card p { color: #9ca3af; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 60px; }
+        .card { background: rgba(220, 38, 38, 0.05); border: 1px solid rgba(220, 38, 38, 0.1); border-radius: 20px; padding: 40px 30px; transition: all 0.4s; cursor: pointer; }
+        .card:hover { transform: translateY(-10px); border-color: rgba(220, 38, 38, 0.3); box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2); }
+        .card span { font-size: 3rem; display: block; margin-bottom: 25px; }
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .card p { color: #9ca3af; line-height: 1.7; }
+        
+        .portfolio { max-width: 1200px; margin: 0 auto; }
+        .portfolio-main { background: rgba(220, 38, 38, 0.05); border: 1px solid rgba(220, 38, 38, 0.1); border-radius: 20px; overflow: hidden; margin-bottom: 30px; }
+        .portfolio-main img { width: 100%; height: 500px; object-fit: cover; }
+        .portfolio-info { padding: 30px; }
+        .tag { background: rgba(220, 38, 38, 0.9); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; }
+        .portfolio-info h3 { font-size: 2rem; margin: 15px 0; }
+        .portfolio-info p { color: #9ca3af; font-size: 1.1rem; }
+        .thumbnails { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .thumbnails img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; cursor: pointer; transition: transform 0.3s; }
+        .thumbnails img:hover { transform: translateY(-5px); }
+        
+        .contact-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; margin-top: 60px; }
+        .contact-info { display: flex; flex-direction: column; gap: 25px; }
+        .info-card { background: rgba(220, 38, 38, 0.05); border: 1px solid rgba(220, 38, 38, 0.1); border-radius: 16px; padding: 25px; transition: all 0.3s; }
+        .info-card:hover { background: rgba(220, 38, 38, 0.1); transform: translateX(10px); }
+        .info-card span { font-size: 2rem; display: block; margin-bottom: 15px; }
+        .info-card h4 { font-size: 1.2rem; margin-bottom: 8px; }
+        .info-card p { color: #9ca3af; }
+        .contact-form { background: rgba(220, 38, 38, 0.05); border: 1px solid rgba(220, 38, 38, 0.1); border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 25px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 15px 20px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(220, 38, 38, 0.2); border-radius: 10px; color: #fff; font-size: 1rem; font-family: 'Inter', sans-serif; }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #dc2626; }
+        .contact-form button { background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; border: none; padding: 16px; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.3s; }
+        .contact-form button:hover { transform: translateY(-3px); }
+        
+        .footer { background: #000; border-top: 1px solid rgba(220, 38, 38, 0.1); padding: 80px 20px 30px; }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .footer h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; background: linear-gradient(135deg, #fff 0%, #dc2626 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+        .footer p { color: #9ca3af; }
+        .footer-links { display: flex; gap: 30px; }
+        .footer-links a { color: #9ca3af; cursor: pointer; transition: color 0.3s; text-decoration: none; }
+        .footer-links a:hover { color: #dc2626; }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; padding-top: 30px; border-top: 1px solid rgba(220, 38, 38, 0.1); }
+        .footer-bottom p, .footer-bottom a { color: #6b7280; font-size: 0.9rem; text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .section h2 { font-size: 2.5rem; }
+            .about-grid, .contact-grid, .footer-content { grid-template-columns: 1fr; }
+            .thumbnails { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo" onclick="scrollTo('hero')">AEVON</h1>
+            <div class="nav-links">
+                <a onclick="scrollTo('about')">About</a>
+                <a onclick="scrollTo('services')">Services</a>
+                <a onclick="scrollTo('portfolio')">Portfolio</a>
+                <button onclick="scrollTo('contact')">Book Demo</button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="hero-content">
+            <span class="badge">✦ Luxury Tech Solutions</span>
+            <h1>AEVON — Elevate Your <span class="gradient">Digital Presence</span></h1>
+            <p>We help businesses build websites, digital marketing, and automation solutions.</p>
+            <button onclick="scrollTo('contact')">Book a Free Demo →</button>
+            <div class="stats">
+                <div><h3>50+</h3><p>Projects</p></div>
+                <div><h3>98%</h3><p>Satisfaction</p></div>
+                <div><h3>24/7</h3><p>Support</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>Who We Are</h2>
+        <p class="subtitle">Crafting digital excellence for forward-thinking businesses</p>
+        <div class="about-grid">
+            <div>
+                <p>AEVON is a luxury-tech business solution provider that specializes in creating premium digital experiences. We combine cutting-edge technology with sophisticated design to help businesses establish a commanding online presence.</p>
+                <div class="features">
+                    <div class="feature"><span>⚡</span><div><h4>Premium Quality</h4><p>Luxury-grade solutions</p></div></div>
+                    <div class="feature"><span>🎯</span><div><h4>Results-Driven</h4><p>Measurable outcomes</p></div></div>
+                    <div class="feature"><span>🚀</span><div><h4>Innovation First</h4><p>Cutting-edge tech</p></div></div>
+                </div>
+            </div>
+            <div class="visual-card">
+                <div class="icon">✓</div>
+                <h3>Tech Excellence</h3>
+                <p>Merging luxury with innovation</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <h2>Our Services</h2>
+        <p class="subtitle">Comprehensive solutions designed to transform your digital landscape</p>
+        <div class="services-grid">
+            <div class="card"><span>🌐</span><h3>Website Development</h3><p>Custom-built, responsive websites that captivate your audience and drive conversions.</p></div>
+            <div class="card"><span>📈</span><h3>Digital Marketing</h3><p>Strategic campaigns that amplify your brand presence across all digital channels.</p></div>
+            <div class="card"><span>🎯</span><h3>Traffic & SEO</h3><p>Data-driven SEO strategies that boost visibility and dominate search rankings.</p></div>
+            <div class="card"><span>⚙️</span><h3>Automation</h3><p>Intelligent automation solutions that streamline operations and accelerate growth.</p></div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <h2>Portfolio Showcase</h2>
+        <p class="subtitle">Explore our latest projects and success stories</p>
+        <div class="portfolio">
+            <div class="portfolio-main">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop" alt="Project">
+                <div class="portfolio-info">
+                    <span class="tag">Web Development</span>
+                    <h3>E-Commerce Platform</h3>
+                    <p>Premium online shopping experience with advanced features</p>
+                </div>
+            </div>
+            <div class="thumbnails">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="Dashboard">
+                <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=300&h=200&fit=crop" alt="Automation">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=300&h=200&fit=crop" alt="Marketing">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Get In Touch</h2>
+        <p class="subtitle">Ready to elevate your digital presence? Let's start a conversation.</p>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="info-card"><span>📧</span><h4>Email</h4><p>contact@aevon.tech</p></div>
+                <div class="info-card"><span>📱</span><h4>Phone</h4><p>+1 (555) 123-4567</p></div>
+                <div class="info-card"><span>⏰</span><h4>Hours</h4><p>Mon-Fri: 9AM-6PM</p></div>
+            </div>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="text" placeholder="Company Name">
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message →</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div><h2>AEVON</h2><p>Elevating digital presence through luxury-tech solutions</p></div>
+            <div class="footer-links">
+                <a onclick="scrollTo('about')">About</a>
+                <a onclick="scrollTo('services')">Services</a>
+                <a onclick="scrollTo('portfolio')">Portfolio</a>
+                <a onclick="scrollTo('contact')">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 AEVON. All rights reserved.</p>
+            <div><a href="#">Privacy</a> • <a href="#">Terms</a></div>
+        </div>
+    </footer>
+
+    <script>
+        function scrollTo(id) {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
